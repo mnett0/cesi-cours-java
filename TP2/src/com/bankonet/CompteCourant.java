@@ -16,4 +16,16 @@ public class CompteCourant {
         CompteCourant.nbCompteCourants++;
         System.out.println(this.solde);
     }
+
+    public void showSolde() {
+        System.out.println(this.solde);
+    }
+
+    public void addMoney(double p_money) {
+        this.solde += p_money;
+    }
+
+    public void removeMoney(double p_money) {
+        this.solde -= p_money;
+    }
 }
