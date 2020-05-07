@@ -12,21 +12,21 @@ class CompteCourantTest {
         CompteCourant compteCourant2 = new CompteCourant("2", "Jean-Didier", 34.50, 150.0);
         CompteCourant compteCourant3 = new CompteCourant("3", "Patrick", 60.90, 150.0);
 
-        assertEquals(3, CompteCourant.nbCompteCourants);
+        assertEquals(3, CompteCourant.getNbCompteCourants());
     }
 
     @Test
     void addMoneyPositif() {
         CompteCourant compteCourant1 = new CompteCourant("1", "Bernard", 22.00, 150.0);
         compteCourant1.crediter(1.00);
-        assertEquals(23.00, compteCourant1.solde);
+        assertEquals(23.00, compteCourant1.getSolde());
     }
 
     @Test
     void addMoneyNegatif() {
         CompteCourant compteCourant1 = new CompteCourant("1", "Bernard", 22.0, 150.0);
         compteCourant1.crediter(-10.00);
-        assertEquals(22.00, compteCourant1.solde);
+        assertEquals(22.00, compteCourant1.getSolde());
     }
 
     /*
@@ -42,14 +42,14 @@ class CompteCourantTest {
     void removeMoneyPositif() {
         CompteCourant compteCourant1 = new CompteCourant("1", "Bernard", 22.0, 200.0);
         compteCourant1.debiter(10);
-        assertEquals(12.0, compteCourant1.solde);
+        assertEquals(12.0, compteCourant1.getSolde());
     }
 
     @Test
     void removeMoneyNegatif() {
         CompteCourant compteCourant1 = new CompteCourant("1", "Bernard", 22.0, 200.0);
         compteCourant1.debiter(-10);
-        assertEquals(22.0, compteCourant1.solde);
+        assertEquals(22.0, compteCourant1.getSolde());
     }
 
     /*
@@ -75,6 +75,6 @@ class CompteCourantTest {
     @Test
     void create_compte_solde_negatif() {
         CompteCourant compteCourant1 = new CompteCourant("1", "Bernard", -22.00, 150.0);
-        assertEquals(0, compteCourant1.solde);
+        assertEquals(0, compteCourant1.getSolde());
     }
 }
