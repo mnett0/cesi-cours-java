@@ -16,14 +16,13 @@ public class CompteCourant {
         this();
         this.numero = p_numero;
         this.intitule = p_intitule;
-        this.solde = p_solde;
+        if (p_solde > 0) {
+            this.solde = p_solde;
+        } else {
+            System.out.println("Vous ne pouvez pas créer de compte avec un solde négatif");
+            this.solde = 0;
+        }
         this.montantDecouvertAutorise = p_montantDecouvertAutorise;
-
-        System.out.println(this.solde);
-    }
-
-    public void showSolde() {
-        System.out.println(this.solde);
     }
 
     public void crediter(double p_money) {
@@ -35,13 +34,14 @@ public class CompteCourant {
     }
 
     public void debiter(double p_money) {
-        if (p_money > 0 && (this.solde - p_money) > (0 - this.montantDecouvertAutorise)) {
+        if ((p_money > 0) && (this.solde - p_money) > (0 - this.montantDecouvertAutorise)) {
             this.solde -= p_money;
         } else {
             System.out.println("Echec de l'opération");
         }
     }
 
+    @Override
     public String toString() {
         return "Voici les informations de votre comtpe :" + "\n" +
                 "- Numéro de compte : " + this.numero + "\n" +
