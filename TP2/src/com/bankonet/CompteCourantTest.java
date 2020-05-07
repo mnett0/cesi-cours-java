@@ -18,16 +18,28 @@ class CompteCourantTest {
     @Test
     void addMoney() {
         CompteCourant compteCourant1 = new CompteCourant("1", "Bernard", 22.00, 150.0);
-        compteCourant1.addMoney(1.00);
+        compteCourant1.crediter(1.00);
         compteCourant1.showSolde();
         assertEquals(23.00, compteCourant1.solde);
     }
 
     @Test
     void removeMoney() {
-        CompteCourant compteCourant1 = new CompteCourant("1", "Bernard", 22.00, 150.0);
-        compteCourant1.removeMoney(10.00);
+        CompteCourant compteCourant1 = new CompteCourant("1", "Bernard", 22.0, 200.0);
+        compteCourant1.debiter(100);
         compteCourant1.showSolde();
-        assertEquals(12.00, compteCourant1.solde);
+        assertEquals(-78, compteCourant1.solde);
+    }
+
+    @Test
+    void tostring() {
+        String result = "Voici les informations de votre comtpe :" + "\n" +
+                "- Numéro de compte : 1\n" +
+                "- Intitule : Bernard\n" +
+                "- Solde : 22.0 \u20ac\n" +
+                "- Découvert autorisé : 150.0 \u20ac";
+        CompteCourant compteCourant1 = new CompteCourant("1", "Bernard", 22.0, 150.0);
+        // System.out.println(compteCourant1.toString());
+        assertEquals(result, compteCourant1.toString());
     }
 }
